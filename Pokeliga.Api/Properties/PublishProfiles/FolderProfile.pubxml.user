@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Git\Liga\Pokeliga-dotnet-backend\Pokeliga.Api\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>False|2024-06-17T22:25:38.2383061Z||;False|2024-06-17T19:25:10.9940550-03:00||;False|2024-06-17T19:24:22.1616830-03:00||;True|2024-06-17T19:21:25.2366399-03:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

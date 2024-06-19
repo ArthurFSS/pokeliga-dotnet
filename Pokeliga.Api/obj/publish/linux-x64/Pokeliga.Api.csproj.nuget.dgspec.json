@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\Liga\\Pokeliga-dotnet-backend\\Pokeliga.Api\\Pokeliga.Api.csproj": {}
+    "C:\\Git\\Liga\\pokeliga-dotnet\\Pokeliga.Api\\Pokeliga.Api.csproj": {}
   },
   "projects": {
-    "C:\\Git\\Liga\\Pokeliga-dotnet-backend\\Pokeliga.Api\\Pokeliga.Api.csproj": {
+    "C:\\Git\\Liga\\pokeliga-dotnet\\Pokeliga.Api\\Pokeliga.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\Liga\\Pokeliga-dotnet-backend\\Pokeliga.Api\\Pokeliga.Api.csproj",
+        "projectUniqueName": "C:\\Git\\Liga\\pokeliga-dotnet\\Pokeliga.Api\\Pokeliga.Api.csproj",
         "projectName": "Pokeliga.Api",
-        "projectPath": "C:\\Git\\Liga\\Pokeliga-dotnet-backend\\Pokeliga.Api\\Pokeliga.Api.csproj",
+        "projectPath": "C:\\Git\\Liga\\pokeliga-dotnet\\Pokeliga.Api\\Pokeliga.Api.csproj",
         "packagesPath": "C:\\Users\\atwii\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\Liga\\Pokeliga-dotnet-backend\\Pokeliga.Api\\obj\\publish\\linux-x64\\",
+        "outputPath": "C:\\Git\\Liga\\pokeliga-dotnet\\Pokeliga.Api\\obj\\publish\\linux-x64\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\atwii\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,9 +60,11 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "Swagger": {
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[8.0.5, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -78,7 +80,15 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[8.0.5, 8.0.5]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[8.0.5, 8.0.5]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
               "version": "[8.0.5, 8.0.5]"
             }
           ],

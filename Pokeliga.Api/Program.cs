@@ -15,11 +15,21 @@ builder.Services.AddScoped<ILigaService, LigaService>();
 builder.Services.AddScoped<IImportService, ImportService>();
 
 builder.Services.AddControllers();
+builder.Services.AddCors(
+    options => {
+        options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+    });
 
 var app = builder.Build();
 
+app.UseCors("AllowAllOrigins");
 app.MapControllers();
-
 app.MapGet("/", () => "Hello World!");
 
 app.Run();

@@ -2,8 +2,8 @@
 {
     public enum ECategoria
     {
-        Junior = 1,
-        Senior = 2,
-        Master = 3,
+        Junior = 0,
+        Senior = 1,
+        Master = 2
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pokeliga.Api.Entities;
 using Pokeliga.Api.Interfaces;
+using Pokeliga.Api.Model;
 
 namespace Pokeliga.Api.Controllers
 {
@@ -16,10 +17,28 @@ namespace Pokeliga.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ligas>>> GetLigas()
+        public async Task<ActionResult<IEnumerable<LigasResponse>>> GetLigas()
         {
             var ligas = await _ligaService.GetLigasAsync();
-            return Ok(ligas);
+            var ligasResponse = new List<LigasResponse>();
+
+            foreach (var item in ligas)
+            {
+                var ligaResponse = new LigasResponse {
+                    Descricao = item.Descricao,
+                    Organizador = item.Organizador,
+                    DataFim = item.DataFim,
+                    DataInicio = item.DataInicio,
+                    Finalizada = item.Finalizada,
+                    Id = item.Id,
+                    IdOrganizador = item.IdOrganizador,
+                    Tipo = item.Tipo,
+                };
+
+                ligasResponse.Add(ligaResponse);
+            }
+
+            return Ok(ligasResponse);
         }
 
         [HttpGet("ativas")]
@@ -30,10 +49,17 @@ namespace Pokeliga.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Resultados>>> GetResultados(int id)
+        public async Task<ActionResult<IEnumerable<ResultadosResponse>>> GetResultados(int id)
         {
             var resultados = await _ligaService.GetResultadoAsync(id);
             return Ok(resultados);
+        }
+
+        [HttpGet("standins/{id}")]
+        public async Task<ActionResult<IEnumerable<Standins>>> GetStandins(int id)
+        {
+            var standins = await _ligaService.GetStandinsAsync(id);
+            return Ok(standins);
         }
     }
 }

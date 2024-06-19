@@ -212,6 +212,12 @@ namespace Pokeliga.Api.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Derrotas")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Empates")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdLiga")
                         .HasColumnType("int");
 
@@ -219,6 +225,9 @@ namespace Pokeliga.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Place")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Vitorias")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

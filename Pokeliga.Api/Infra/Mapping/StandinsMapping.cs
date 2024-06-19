@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using Pokeliga.Api.Entities;
+using Pokeliga.Api.Model;
 
 namespace Pokeliga.Api.Infra.Mapping
 {
@@ -25,6 +26,15 @@ namespace Pokeliga.Api.Infra.Mapping
 
             builder.Property(x => x.IdPokemon)
                             .IsRequired(true);
+
+            builder.Property(x => x.Vitorias)
+                           .IsRequired(true);
+
+            builder.Property(x => x.Empates)
+                           .IsRequired(true);
+
+            builder.Property(x => x.Derrotas)
+                           .IsRequired(true);
 
             builder.HasOne<Ligas>()
                             .WithMany()

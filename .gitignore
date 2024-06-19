@@ -1,0 +1,228 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+Generated\ Files/
+.ncrunch*
+*.ncrunchsolution
+*.ncrunchproject
+*.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio Code directories
+.vscode/
+.vscode/*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code files for those working in Visual Studio Code
+.vscode/
+
+# Coverlet Coverage Directory
+coverage/
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# DotCover
+*.dotCover
+
+# TeamCity
+_TeamCity*
+
+# Dotfuscator
+Dotfuscator/
+
+# Visual Studio temporary files
+$tf/
+
+# Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+
+# Others
+.vs/
+.cache/
+*.pyc
+.vscode/
+.mono/
+.ionide/
+.idea/
+.razor/
+.ionide/
+# dotnet-compile reports
+build_report.txt
+
+# Publish folder
+publish/
+
+# npm
+node_modules/
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+resharper.xml
+
+# Mac files
+.DS_Store
+._*
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Logs
+*.log
+
+# OS Generated Files
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+.vscode/
+
+# System32 files
+*[Ss]ystem32
+*system32*
+
+# Visual Studio working files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Configuration Files
+*.DotSettings
+
+# SonarQube
+.sonarqube/
+
+# VsCode
+.history/
+.vscode/
+
+# Azure Pipelines
+/.azure/
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# DocProject specific folders
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hxc
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+
+# DocFX specific files
+_site/
+.project/
+
+# StyleCop
+.StyleCop/
+
+# LiteDB
+*.db
+
+# Coverlet Coverage Directory
+coverage/
+
+# IDE directories
+.idea/
+.idea_modules/
+
+# Windows image file caches
+ehthumbs.db
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Exclude all files that should be ignored
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/.DS_Store
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework Core Migrations
+migrations/
+
+# Coverage files
+coverage/
+*.coverage
+*.coveragexml
+*.results
+*.crdata
+*.pdb

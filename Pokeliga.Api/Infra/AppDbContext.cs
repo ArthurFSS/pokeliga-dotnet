@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pokeliga.Api.Entities;
+using Pokeliga.Api.Model;
 using System.Reflection;
 
 namespace Pokeliga.Api.Infra

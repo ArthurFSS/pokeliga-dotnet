@@ -8,5 +8,6 @@ namespace Pokeliga.Api.Interfaces
         Task ImportarPartidas(List<PartidaImportRequest> request);
         Task ImportarJogadores(List<PlayersImportRequest> request);
         Task ImportarStandins(List<StandinImportRequest> request);
+        Task AtualizarLiga(DateTime data, int idLiga);
     }
 }

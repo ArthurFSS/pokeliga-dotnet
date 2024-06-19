@@ -33,7 +33,12 @@ namespace Pokeliga.Api.Controllers
         [HttpPost("standins")]
         public async Task<IActionResult> ImportarStandins([FromBody] List<StandinImportRequest> request)
         {
+            var data = request.First().Data;
+            var liga = request.First().IdLiga;
+
             await _importService.ImportarStandins(request);
+            await _importService.AtualizarLiga(data, liga);
+
             return Ok(new { mensagem = "Importação de standins realizada com sucesso!" });
         }
     }

@@ -25,5 +25,9 @@ namespace Pokeliga.Api.Entities
         public DateTime Data {  get; set; }
         public int IdLiga { get; set; }
         public int IdPokemon {  get; set; }
+        public int Vitorias { get; set; }
+        public int Derrotas { get; set; }
+        public int Empates { get; set; }
+        public int Pontos => (this.Vitorias * 3) + this.Empates; 
     }
 }

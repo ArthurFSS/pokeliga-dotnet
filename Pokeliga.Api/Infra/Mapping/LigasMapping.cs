@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Identity.Client;
 using Pokeliga.Api.Entities;
+using Pokeliga.Api.Model;
 
 namespace Pokeliga.Api.Infra.Mapping
 {

@@ -1,4 +1,5 @@
 ﻿using Pokeliga.Api.Entities;
+using Pokeliga.Api.Model;
 
 namespace Pokeliga.Api.Interfaces
 {
@@ -6,6 +7,7 @@ namespace Pokeliga.Api.Interfaces
     {
         Task<IEnumerable<Ligas>> GetLigasAsync();
         Task<IEnumerable<Ligas>> GetLigasAsync(bool ativa, int idLoja = 0);
-        Task<IEnumerable<Resultados>> GetResultadoAsync(int idLiga);
+        Task<IEnumerable<ResultadosResponse>> GetResultadoAsync(int idLiga);
+        Task<IEnumerable<StandinsEvento>> GetStandinsAsync(int idLiga);
     }
 }

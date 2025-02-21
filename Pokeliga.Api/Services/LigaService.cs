@@ -198,9 +198,9 @@ namespace Pokeliga.Api.Services
                 TotalEmpates = totalEmpates,
                 TotalPartidas = totalPartidas,
                 PlayersMaisPerderamNomes = playersMaisPerderamNomes,
-                TotalDerrotasParaEssesPlayers = maxDerrotas,
+                TotalDerrotasParaEssesPlayers = maxVitorias,
                 PlayersMaisGanharamNomes = playersMaisGanharamNomes,
-                TotalVitoriasDessePlayers = maxVitorias
+                TotalVitoriasDessePlayers =  maxDerrotas
             };
         }
 

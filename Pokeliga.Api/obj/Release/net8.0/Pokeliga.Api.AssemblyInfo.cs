@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pokeliga.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e30f03c8ea3c734716ecbd2c6da805c3e1365ea4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7b9a834f9b563bede9b5e2fd41e300584845b61")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pokeliga.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pokeliga.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -18,6 +18,7 @@ namespace Pokeliga.Api.Infra
         public DbSet<Resultados> Resultados { get; set; } = null!;
         public DbSet<Standins> Standins { get; set; } = null!;
         public DbSet<GlcBadges> GlcBadges { get; set; } = null!;
+        public DbSet<Codigos> Codigos { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

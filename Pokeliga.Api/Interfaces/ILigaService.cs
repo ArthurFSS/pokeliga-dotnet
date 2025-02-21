@@ -9,5 +9,6 @@ namespace Pokeliga.Api.Interfaces
         Task<IEnumerable<Ligas>> GetLigasAsync(bool ativa, int idLoja = 0);
         Task<IEnumerable<ResultadosResponse>> GetResultadoAsync(int idLiga);
         Task<IEnumerable<StandinsEvento>> GetStandinsAsync(int idLiga);
+        Task<PremiacaoResponse> GetCaixa(int idLiga);
     }
 }

@@ -12,5 +12,6 @@ namespace Pokeliga.Api.Entities
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public bool Finalizada { get; set; }
+        public int ValorCaixaIndividual { get; set; }
     }
 }

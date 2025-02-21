@@ -22,6 +22,8 @@ namespace Pokeliga.Api.Infra.Mapping
 
             builder.Property(x => x.Birthdate)
                             .IsRequired(true);
+
+            builder.Property(x => x.Email);
         }
     }
 

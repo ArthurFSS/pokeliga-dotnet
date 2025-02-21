@@ -64,11 +64,6 @@ namespace Pokeliga.Api.Services
                 .Where(x => ids.Contains(x.IdPokemon))
                 .ToListAsync();
 
-            foreach (var standin in standins)
-            {
-  
-            }
-
             var standinsAgrupados = standins
                                     .GroupBy(x => new { x.Categoria, x.Data })
                                     .ToList();
@@ -108,12 +103,23 @@ namespace Pokeliga.Api.Services
                 standinsEventoList.Add(standinsEvento);
             }
 
-            return standinsEventoList;
+            return standinsEventoList.OrderByDescending(x => x.Data);
         }
 
         public async Task<IEnumerable<GlcBadges>> GetLigaGlcAsync(int idLiga)
         {
             return await _context.GlcBadges.ToListAsync();
+        }
+
+        public async Task<PremiacaoResponse> GetCaixa(int idLiga)
+        {
+            var quantidadeJogadores = _context.Standins.Where(x => x.IdLiga == idLiga).Count();
+       
+            var valor = (await _context.Ligas.FirstOrDefaultAsync(x => x.Id == idLiga)).ValorCaixaIndividual;
+
+            var total = quantidadeJogadores * valor;
+
+            return new PremiacaoResponse(total);
         }
     }
 }

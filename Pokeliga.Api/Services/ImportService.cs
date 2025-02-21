@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Pokeliga.Api.Entities;
+using Pokeliga.Api.Entities.Enun;
 using Pokeliga.Api.Infra;
 using Pokeliga.Api.Interfaces;
 using Pokeliga.Api.Model;
@@ -56,8 +57,8 @@ namespace Pokeliga.Api.Services
 
         public async Task ImportarStandins(List<StandinImportRequest> request)
         {
-            var standins = new List<Standins>();
-
+            var standins = new List<Standins>();       
+            
             foreach (var item in request)
             {
                 var partidas = await _context.Partidas.Where(x => (x.Player1 == item.IdPokemon || x.Player2 == item.IdPokemon) && x.Data == item.Data).ToListAsync();
@@ -73,7 +74,6 @@ namespace Pokeliga.Api.Services
                     if (partida.Outcome == 3)
                         standin.Empates = standin.Empates + 1;
                 }
-
                 
                 standins.Add(standin);
             }
@@ -84,12 +84,11 @@ namespace Pokeliga.Api.Services
 
         public async Task AtualizarLiga(DateTime data, int idLiga)
         {
-            var standins = await _context.Standins.Where(x => x.Data == data).ToListAsync();
+            var standins = await _context.Standins.Where(x => x.Data == data && x.Categoria != ECategoria.Master).ToListAsync();
             var ids = standins.Select(x => x.IdPokemon);
             var resultados = await _context.Resultados.Where(x => x.IdLiga == idLiga && ids.Contains(x.IdPokemon)).ToListAsync();
             var players = await _context.Players.Where(x =>ids.Contains(x.IdPokemon)).ToListAsync();
 
-            //Criar regra de pontuação aqui.
             int pontosPorPresenca = 3;
 
             foreach (var item in standins)
@@ -102,7 +101,6 @@ namespace Pokeliga.Api.Services
                 }
                 else
                 {
-                    // Criar um novo resultado
                     var player = players.FirstOrDefault(x => x.IdPokemon == item.IdPokemon);
                     var nome = player?.FirstName + " " +  player?.LastName;
                     
@@ -121,6 +119,5 @@ namespace Pokeliga.Api.Services
 
             await _context.SaveChangesAsync();
         }
-
     }
 }

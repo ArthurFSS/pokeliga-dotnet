@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pokeliga.Api.Entities;
 using Pokeliga.Api.Interfaces;
 using Pokeliga.Api.Model;
 
@@ -9,12 +8,12 @@ namespace Pokeliga.Api.Controllers
     [Route("import")]
     public class ImportController : ControllerBase
     {
-            private readonly IImportService _importService;
+        private readonly IImportService _importService;
 
-            public ImportController(IImportService importService)
-            {
-                _importService = importService;
-            }
+        public ImportController(IImportService importService)
+        {
+            _importService = importService;
+        }
 
         [HttpPost("partidas")]
         public async Task<IActionResult> ImportarPartidas([FromBody] List<PartidaImportRequest> request)

@@ -13,6 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 builder.Services.AddScoped<ILigaService, LigaService>();
 builder.Services.AddScoped<IImportService, ImportService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddControllers();
 builder.Services.AddCors(
@@ -28,8 +29,11 @@ builder.Services.AddCors(
 
 var app = builder.Build();
 
+
+
+
 app.UseCors("AllowAllOrigins");
 app.MapControllers();
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Poke Liga API ");
 
 app.Run();

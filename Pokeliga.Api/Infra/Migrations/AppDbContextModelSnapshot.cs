@@ -22,6 +22,33 @@ namespace Pokeliga.Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Pokeliga.Api.Entities.Codigos", b =>
+                {
+                    b.Property<string>("Codigo")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Colecao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataInclusao")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataVenda")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailVenda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Usado")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Codigo");
+
+                    b.ToTable("Codigos", (string)null);
+                });
+
             modelBuilder.Entity("Pokeliga.Api.Entities.GlcBadges", b =>
                 {
                     b.Property<int>("Id")
@@ -102,6 +129,9 @@ namespace Pokeliga.Api.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
+                    b.Property<int>("ValorCaixaIndividual")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Ligas", (string)null);
@@ -150,6 +180,9 @@ namespace Pokeliga.Api.Migrations
 
                     b.Property<DateTime>("Birthdate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

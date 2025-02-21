@@ -31,6 +31,8 @@ namespace Pokeliga.Api.Infra.Mapping
 
             builder.Property(x => x.IdOrganizador)
                            .IsRequired(true);
+            builder.Property(x => x.ValorCaixaIndividual)
+                          .IsRequired(true);
         }
     }
 }

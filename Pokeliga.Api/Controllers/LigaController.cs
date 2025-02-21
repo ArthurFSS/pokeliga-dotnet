@@ -44,7 +44,7 @@ namespace Pokeliga.Api.Controllers
         [HttpGet("ativas")]
         public async Task<ActionResult<IEnumerable<Ligas>>> GetLigasAtivas()
         {
-            var ligas = await _ligaService.GetLigasAsync(true);
+            var ligas = await _ligaService.GetLigasAsync(false);
             return Ok(ligas);
         }
 
@@ -60,6 +60,13 @@ namespace Pokeliga.Api.Controllers
         {
             var standins = await _ligaService.GetStandinsAsync(id);
             return Ok(standins);
+        }
+
+        [HttpGet("caixa/{id}")]
+        public async Task<ActionResult<IEnumerable<Standins>>> GetCaixa(int id)
+        {
+            var premiacao = await _ligaService.GetCaixa(id);
+            return Ok(premiacao);
         }
     }
 }

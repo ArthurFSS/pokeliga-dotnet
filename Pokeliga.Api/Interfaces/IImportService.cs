@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Pokeliga.Api.Model;
+﻿using Pokeliga.Api.Model;
 
 namespace Pokeliga.Api.Interfaces
 {

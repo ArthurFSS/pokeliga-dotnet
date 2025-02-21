@@ -7,11 +7,9 @@
         public int TotalDerrotas { get; set; }
         public int TotalEmpates { get; set; }
         public int TotalPartidas { get; set; }
-        public string PlayerMaisPerdeuNome { get; set; }
-        public int TotalDerrotasParaEssePlayer { get; set; }
-        public string PlayerMaisGanhouNome { get; set; }
-        public int TotalVitoriasDessePlayer { get; set; }
+        public List<string> PlayersMaisPerderamNomes { get; set; } = new List<string>();
+        public int TotalDerrotasParaEssesPlayers { get; set; }
+        public List<string> PlayersMaisGanharamNomes { get; set; } = new List<string>();
+        public int TotalVitoriasDessePlayers { get; set; }
     }
-
-
 }

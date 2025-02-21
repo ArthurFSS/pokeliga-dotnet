@@ -68,5 +68,12 @@ namespace Pokeliga.Api.Controllers
             var premiacao = await _ligaService.GetCaixa(id);
             return Ok(premiacao);
         }
+
+        [HttpGet("playerHistory/{id}")]
+        public async Task<ActionResult<IEnumerable<Standins>>> GetPlayerHistory(int id)
+        {
+            var historico = await _ligaService.GetPlayerHistory(id);
+            return Ok(historico);
+        }
     }
 }

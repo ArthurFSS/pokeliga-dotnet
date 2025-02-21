@@ -10,5 +10,6 @@ namespace Pokeliga.Api.Interfaces
         Task<IEnumerable<ResultadosResponse>> GetResultadoAsync(int idLiga);
         Task<IEnumerable<StandinsEvento>> GetStandinsAsync(int idLiga);
         Task<PremiacaoResponse> GetCaixa(int idLiga);
+        Task<PlayerHistoryResponse> GetPlayerHistory(int pokeId);
     }
 }

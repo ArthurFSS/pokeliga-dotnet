@@ -121,5 +121,85 @@ namespace Pokeliga.Api.Services
 
             return new PremiacaoResponse(total);
         }
+
+        public async Task<PlayerHistoryResponse> GetPlayerHistory(int pokeId)
+        {
+            // Obter o nome do jogador pesquisado
+            var playerBuscado = await _context.Players
+                .FirstOrDefaultAsync(p => p.IdPokemon == pokeId);
+
+            var resultados = await _context.Partidas
+                .Where(x => x.Player1 == pokeId || x.Player2 == pokeId)
+                .ToListAsync();
+
+            var totalPartidas = resultados.Count;
+
+            var totalVitorias = resultados.Count(x =>
+                (x.Player1 == pokeId && x.Outcome == 1) ||
+                (x.Player2 == pokeId && x.Outcome == 2)
+            );
+
+            var totalDerrotas = resultados.Count(x =>
+                (x.Player1 == pokeId && x.Outcome == 2) ||
+                (x.Player2 == pokeId && x.Outcome == 1)
+            );
+
+            var totalEmpates = resultados.Count(x => x.Outcome == 3);
+
+            // Player que mais perdeu para ele (Ele venceu)
+            var playerMaisPerdeu = resultados
+                .Where(x =>
+                    (x.Player1 == pokeId && x.Outcome == 1) ||
+                    (x.Player2 == pokeId && x.Outcome == 2)
+                )
+                .Select(x => x.Player1 == pokeId ? x.Player2 : x.Player1)
+                .GroupBy(player => player)
+                .Select(g => new { Player = g.Key, Derrotas = g.Count() })
+                .OrderByDescending(x => x.Derrotas)
+                .FirstOrDefault();
+
+            // Player que mais ganhou dele (Ele perdeu)
+            var playerMaisGanhou = resultados
+                .Where(x =>
+                    (x.Player1 == pokeId && x.Outcome == 2) ||
+                    (x.Player2 == pokeId && x.Outcome == 1)
+                )
+                .Select(x => x.Player1 == pokeId ? x.Player2 : x.Player1)
+                .GroupBy(player => player)
+                .Select(g => new { Player = g.Key, Vitorias = g.Count() })
+                .OrderByDescending(x => x.Vitorias)
+                .FirstOrDefault();
+
+            // Buscar nomes dos players que mais perderam e mais ganharam
+            var playerMaisPerdeuNome = playerMaisPerdeu != null
+                ? await _context.Players
+                    .Where(p => p.IdPokemon == playerMaisPerdeu.Player)
+                    .Select(p => $"{p.FirstName} {p.LastName}")
+                    .FirstOrDefaultAsync()
+                : "Nenhum";
+
+            var playerMaisGanhouNome = playerMaisGanhou != null
+                ? await _context.Players
+                    .Where(p => p.IdPokemon == playerMaisGanhou.Player)
+                    .Select(p => $"{p.FirstName} {p.LastName}")
+                    .FirstOrDefaultAsync()
+                : "Nenhum";
+
+            return new PlayerHistoryResponse
+            {
+                PlayerNome = playerBuscado != null ? $"{playerBuscado.FirstName} {playerBuscado.LastName}" : "Desconhecido",
+                TotalVitorias = totalVitorias,
+                TotalDerrotas = totalDerrotas,
+                TotalEmpates = totalEmpates,
+                TotalPartidas = totalPartidas,
+                PlayerMaisPerdeuNome = playerMaisPerdeuNome,
+                TotalDerrotasParaEssePlayer = playerMaisPerdeu?.Derrotas ?? 0,
+                PlayerMaisGanhouNome = playerMaisGanhouNome,
+                TotalVitoriasDessePlayer = playerMaisGanhou?.Vitorias ?? 0
+            };
+        }
+
+
+
     }
 }

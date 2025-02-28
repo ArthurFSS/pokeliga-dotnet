@@ -84,7 +84,7 @@ namespace Pokeliga.Api.Services
 
         public async Task AtualizarLiga(DateTime data, int idLiga)
         {
-            var standins = await _context.Standins.Where(x => x.Data == data && x.Categoria != ECategoria.Master).ToListAsync();
+            var standins = await _context.Standins.Where(x => x.Data == data).ToListAsync();
             var ids = standins.Select(x => x.IdPokemon);
             var resultados = await _context.Resultados.Where(x => x.IdLiga == idLiga && ids.Contains(x.IdPokemon)).ToListAsync();
             var players = await _context.Players.Where(x =>ids.Contains(x.IdPokemon)).ToListAsync();

@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Pokeliga.Api.Entities;
-using Pokeliga.Api.Entities.Enun;
 using Pokeliga.Api.Infra;
 using Pokeliga.Api.Interfaces;
 using Pokeliga.Api.Model;
@@ -46,8 +44,8 @@ namespace Pokeliga.Api.Services
             {
                 if (!existingIdPokemons.Contains(item.IdPokemon))
                 {
-                var player = new Players(item);
-                players.Add(player);
+                    var player = new Players(item);
+                    players.Add(player);
                 }
             }
 
@@ -57,15 +55,16 @@ namespace Pokeliga.Api.Services
 
         public async Task ImportarStandins(List<StandinImportRequest> request)
         {
-            var standins = new List<Standins>();       
-            
+            var standins = new List<Standins>();
+
             foreach (var item in request)
             {
                 var partidas = await _context.Partidas.Where(x => (x.Player1 == item.IdPokemon || x.Player2 == item.IdPokemon) && x.Data == item.Data).ToListAsync();
                 var standin = new Standins(item);
 
-                foreach (var partida in partidas) {
-                    if ((partida.Player1 == item.IdPokemon && partida.Outcome == 1) ||(partida.Player2 == item.IdPokemon && partida.Outcome == 2))
+                foreach (var partida in partidas)
+                {
+                    if ((partida.Player1 == item.IdPokemon && partida.Outcome == 1) || (partida.Player2 == item.IdPokemon && partida.Outcome == 2) || (partida.Outcome == 5))
                         standin.Vitorias = standin.Vitorias + 1;
 
                     if ((partida.Player1 == item.IdPokemon && partida.Outcome == 2) || (partida.Player2 == item.IdPokemon && partida.Outcome == 1))
@@ -74,7 +73,7 @@ namespace Pokeliga.Api.Services
                     if (partida.Outcome == 3)
                         standin.Empates = standin.Empates + 1;
                 }
-                
+
                 standins.Add(standin);
             }
 
@@ -87,7 +86,7 @@ namespace Pokeliga.Api.Services
             var standins = await _context.Standins.Where(x => x.Data == data).ToListAsync();
             var ids = standins.Select(x => x.IdPokemon);
             var resultados = await _context.Resultados.Where(x => x.IdLiga == idLiga && ids.Contains(x.IdPokemon)).ToListAsync();
-            var players = await _context.Players.Where(x =>ids.Contains(x.IdPokemon)).ToListAsync();
+            var players = await _context.Players.Where(x => ids.Contains(x.IdPokemon)).ToListAsync();
 
             int pontosPorPresenca = 3;
 
@@ -102,8 +101,8 @@ namespace Pokeliga.Api.Services
                 else
                 {
                     var player = players.FirstOrDefault(x => x.IdPokemon == item.IdPokemon);
-                    var nome = player?.FirstName + " " +  player?.LastName;
-                    
+                    var nome = player?.FirstName + " " + player?.LastName;
+
                     var novoResultado = new Resultados
                     {
                         IdLiga = idLiga,
@@ -115,7 +114,6 @@ namespace Pokeliga.Api.Services
                     _context.Resultados.Add(novoResultado);
                 }
             }
-
 
             await _context.SaveChangesAsync();
         }
